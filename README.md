@@ -57,6 +57,15 @@
     * 備考
 
 
-# 技術
+# 使用技術
 * React.js
 * Next.js
+* Tailwind CSS
+* Atomic Design
+
+# 実行手順
+### セットアップ
+1. `git clone https://github.com/Jun-T-git/codemap.git`
+1. `yarn`
+### ローカルで実行   
+1. `yarn dev`
