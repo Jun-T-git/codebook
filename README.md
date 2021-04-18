@@ -1,34 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Codemap
+* 技術書・学習サイトのレビューサービス
+* 学習ロードマップ共有サービス
 
-## Getting Started
 
-First, run the development server:
+# 解決する課題
+* 技術書を買ったときの「思っていたものと違った」というギャップを減らす
+* Amazon等のレビューサービスではどんな技術書か分かりにくい
+* 対象読者・入門者向けか上級者向けか・ビジネス寄りかアカデミック寄りかなどを分かりやすくする　
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 機能
+### 未認証ユーザ機能
+* サインアップ
+    * ユーザ名
+    * ID
+    * パスワード
+    * ユーザタグ
+    * ジャンルごとのレベル
+* サインイン
+* レビューの閲覧
+    * 投稿日時順
+    * 評価順
+    * 注目度順
+* レビューの検索・絞り込み
+    * 書籍名
+    * ユーザ名
+    * タグ
+    * ユーザタグ
+    * 評価
+    * 投稿日時
+    * ジャンル・言語
+* ロードマップの閲覧
+    * 評価順
+* ロードマップの検索・絞り込み
+    * 書籍名
+    * ユーザ名
+    * ユーザタグ
+    * 評価
+    * ジャンル・言語
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### 認証済ユーザのみの機能
+* サインアウト
+* レビューの投稿
+    * 書籍名
+    * ユーザ名
+    * タグ
+    * 評価
+    * 投稿日時
+    * ジャンル・言語
+* レビューの閲覧
+    * 【発展】閲覧履歴や購買履歴に基づくおすすめ順
+* ロードマップの閲覧
+    * 【発展】閲覧履歴・購買履歴・他ジャンルのロードマップに基づくおすすめ順
+* ロードマップの投稿
+    * 自分の投稿を選択して並べる
+    * 備考
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# 技術
+* React.js
+* Next.js
