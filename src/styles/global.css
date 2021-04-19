@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/*背景色*/
+html {
+    @apply bg-gray-100;
+}
+
 /*ボタン*/
 .btn-black {
     @apply bg-gray-700 text-white;
