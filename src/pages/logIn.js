@@ -1,5 +1,5 @@
 import LogInTemplate from "../components/templates/logInTemplate";
 
-const LogInPage = () => <LogInPage />;
+const LogInPage = () => <LogInTemplate />;
 
-export default LogInTemplate;
+export default LogInPage;

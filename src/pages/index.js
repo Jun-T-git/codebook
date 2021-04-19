@@ -9,7 +9,7 @@ import LogInForm from "../components/organisms/logInForm";
 
 export default function Home() {
   return (
-    <div className={"bg-gray-100 h-screen"}>
+    <>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,6 +27,6 @@ export default function Home() {
       {/*<Text content={"テスト投稿する？Yes, no"} />*/}
       {/*<InputMol text={"名前"} onChange={() => {}} placeHolder={"山田太郎"} />*/}
       {/*<LogInForm />*/}
-    </div>
+    </>
   );
 }
