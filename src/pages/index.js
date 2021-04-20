@@ -6,6 +6,7 @@ import Input from "../components/atoms/input";
 import Text from "../components/atoms/Text";
 import InputMol from "../components/molecules/inputMol";
 import LogInForm from "../components/organisms/logInForm";
+import Header from "../components/molecules/header";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <Link href={`/logIn`}>
         <Button className={"btn-black"} onClick={() => {}}>
           ログイン
