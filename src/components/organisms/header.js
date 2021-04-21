@@ -1,4 +1,5 @@
 import MediaQuery from "react-responsive";
+import { connect } from "react-redux";
 import Text from "../atoms/Text";
 import Link from "next/link";
 import LogOutHeaderElements from "../molecules/logOutheaderElements";
@@ -9,7 +10,7 @@ import LogInHeaderElements from "../molecules/logInheaderElements";
 // className 属性
 
 const Header = ({ isLogIn, className }) => (
-  <div className={`${className} bg-gray-700`}>
+  <div className={`${className} bg-gray-700 mb-2`}>
     <nav className={`px-2 py-1 flex justify-between items-center`}>
       <div className={"flex justify-between items-center"}>
         <Link href="/">
@@ -20,28 +21,28 @@ const Header = ({ isLogIn, className }) => (
             />
           </a>
         </Link>
-        <MediaQuery query="(min-width: 768px)">
-          <Link href="/">
-            <a>
-              <Text
-                content={"書籍を探す"}
-                className={
-                  "inline-block text-sm px-6 py-1 text-gray-200 hover:text-gray-400"
-                }
-              />
-            </a>
-          </Link>
-          <Link href="/">
-            <a>
-              <Text
-                content={"ロードマップを探す"}
-                className={
-                  "inline-block text-sm px-6 py-1 text-gray-200 hover:text-gray-400"
-                }
-              />
-            </a>
-          </Link>
-        </MediaQuery>
+        {/*<MediaQuery query="(min-width: 768px)">*/}
+        <Link href="/">
+          <a>
+            <Text
+              content={"書籍を探す"}
+              className={
+                "inline-block text-sm px-6 py-1 text-gray-200 hover:text-gray-400"
+              }
+            />
+          </a>
+        </Link>
+        <Link href="/">
+          <a>
+            <Text
+              content={"ロードマップを探す"}
+              className={
+                "inline-block text-sm px-6 py-1 text-gray-200 hover:text-gray-400"
+              }
+            />
+          </a>
+        </Link>
+        {/*</MediaQuery>*/}
       </div>
       {isLogIn ? <LogInHeaderElements /> : <LogOutHeaderElements />}
     </nav>
@@ -72,4 +73,10 @@ const Header = ({ isLogIn, className }) => (
   </div>
 );
 
-export default Header;
+const mapStateToProps = (state, props) => {
+  return {
+    isLogIn: state.isLogIn,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

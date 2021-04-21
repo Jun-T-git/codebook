@@ -1,11 +1,13 @@
+import { connect } from "react-redux";
 import FormElements from "../molecules/formElements";
 import Text from "../atoms/Text";
 import Button from "../atoms/button";
+import { logIn } from "../../store/auth";
 
 // ログインフォーム
 // className 属性
 
-const LogInForm = ({ className }) => (
+const LogInForm = ({ dispatch, className }) => (
   <div
     className={`${className} bg-white shadow-md rounded px-14 pt-6 pb-8 mb-4 max-w-md mx-auto`}
   >
@@ -26,10 +28,21 @@ const LogInForm = ({ className }) => (
       type={"password"}
       className={"my-7"}
     />
-    <Button onClick={() => {}} className={"w-full btn-black mt-5 mb-2"}>
+    <Button
+      onClick={() => {
+        dispatch(logIn());
+      }}
+      className={"w-full btn-black mt-5 mb-2"}
+    >
       ログイン
     </Button>
   </div>
 );
 
-export default LogInForm;
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     logIn: dispatch(logIn()),
+//   };
+// };
+
+export default connect()(LogInForm);
