@@ -1,34 +1,56 @@
 import Link from "next/link";
 import Head from "next/head";
-import Button from "../components/atoms/button";
-import CircleImage from "../components/atoms/circleImage";
-import Input from "../components/atoms/input";
-import Text from "../components/atoms/Text";
-import InputMol from "../components/molecules/inputMol";
-import LogInForm from "../components/organisms/logInForm";
-import Header from "../components/molecules/header";
+import Header from "../components/organisms/header";
+import SearchForm from "../components/organisms/searchForm";
+import Card from "../components/molecules/Card";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Codemap</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <Link href={`/logIn`}>
-        <Button className={"btn-black"} onClick={() => {}}>
-          ログイン
-        </Button>
-      </Link>
-      <Button className={"btn-white"} onClick={() => {}}>
-        ログインしない
-      </Button>
-      {/*<CircleImage src={"/images/profile.jpg"} />*/}
-      {/*<Input placeHolder={"テスト"} />*/}
-      {/*<Text content={"テスト投稿する？Yes, no"} />*/}
-      {/*<InputMol text={"名前"} onChange={() => {}} placeHolder={"山田太郎"} />*/}
-      {/*<LogInForm />*/}
+      <Header className={"mb-2"} />
+      <SearchForm title={"書籍を探す"} className={"m-5"} />
+      <Card
+        title={"書籍タイトル"}
+        image={"/images/profile.jpg"}
+        tags={["tag1", "tag2", "tag3"]}
+        review={"4.1"}
+        level={"3.5"}
+      />
+      <Card
+        title={"書籍タイトル"}
+        image={"/images/profile.jpg"}
+        tags={["tag1", "tag2", "tag3"]}
+        review={"4.1"}
+        level={"3.5"}
+      />
+      <Card
+        title={"書籍タイトル"}
+        image={"/images/profile.jpg"}
+        tags={["tag1", "tagtagtagtagtagtagtagtagtagtagtagtagtagtag", "tag3"]}
+        review={"4.1"}
+        level={"3.5"}
+      />
+      <Card
+        title={"書籍タイトル"}
+        image={"/images/profile.jpg"}
+        tags={[
+          "tag1",
+          "tag2",
+          "tag3",
+          "tag1",
+          "tag2",
+          "tag3",
+          "tag1",
+          "tag2",
+          "tag3",
+        ]}
+        review={"4.1"}
+        level={"3.5"}
+      />
     </>
   );
 }
