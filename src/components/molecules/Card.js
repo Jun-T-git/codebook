@@ -1,4 +1,3 @@
-import MediaQuery from "react-responsive";
 import Text from "../atoms/Text";
 import RectImage from "../atoms/rectImage";
 import Tag from "../atoms/tag";
@@ -13,7 +12,7 @@ import Tag from "../atoms/tag";
 
 const Card = ({ title, image, tags, review, level, className }) => (
   <>
-    <MediaQuery query="(min-width: 768px)">
+    <div className={"hidden md:block"}>
       <div
         className={`${className} flex justify-between bg-white shadow-md rounded px-14 pt-6 pb-8 mb-4 max-w-4xl mx-auto`}
       >
@@ -38,9 +37,9 @@ const Card = ({ title, image, tags, review, level, className }) => (
           <Text content={"難易度：" + level} className={"text-sm"} />
         </div>
       </div>
-    </MediaQuery>
+    </div>
 
-    <MediaQuery query="(max-width: 767px)">
+    <div className={"md:hidden"}>
       <div
         className={`${className} bg-white shadow-md rounded px-7 pt-6 pb-8 mb-4 max-w-4xl mx-auto`}
       >
@@ -67,7 +66,7 @@ const Card = ({ title, image, tags, review, level, className }) => (
           })}
         </div>
       </div>
-    </MediaQuery>
+    </div>
   </>
 );
 

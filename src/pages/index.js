@@ -11,8 +11,8 @@ export default function Home() {
         <title>Codemap</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header className={"mb-2"} />
-      <SearchForm title={"書籍を探す"} className={"m-5"} />
+      <Header />
+      <SearchForm title={"書籍を探す"} className={"my-5"} />
       <Card
         title={"書籍タイトル"}
         image={"/images/profile.jpg"}
