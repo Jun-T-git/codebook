@@ -34,7 +34,9 @@ export const authReducer = (state = state_value, action) => {
       state.isLogIn = false;
       break;
   }
-  return state;
+  return {
+    isLogIn: state.isLogIn,
+  };
 };
 
 export const store = createStore(authReducer);

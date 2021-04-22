@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import Link from "next/link";
 import FormElements from "../molecules/formElements";
 import Text from "../atoms/Text";
 import Button from "../atoms/button";
@@ -28,21 +29,19 @@ const LogInForm = ({ dispatch, className }) => (
       type={"password"}
       className={"my-7"}
     />
-    <Button
-      onClick={() => {
-        dispatch(logIn());
-      }}
-      className={"w-full btn-black mt-5 mb-2"}
-    >
-      ログイン
-    </Button>
+    <Link href={"/"}>
+      <a>
+        <Button
+          onClick={() => {
+            dispatch(logIn());
+          }}
+          className={"w-full btn-black mt-5 mb-2"}
+        >
+          ログイン
+        </Button>
+      </a>
+    </Link>
   </div>
 );
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     logIn: dispatch(logIn()),
-//   };
-// };
 
 export default connect()(LogInForm);
