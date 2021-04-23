@@ -9,7 +9,7 @@ import { logOut } from "../../store/auth";
 const LogInHeaderElements = ({ dispatch, className }) => (
   <div className={`${className} space-x-4 px-4`}>
     <Link href="/logIn">
-      <a className="inline-block text-sm px-4 py-2 border rounded text-white border-white hover:text-gray-700 hover:bg-gray-200">
+      <a className="inline-block text-sm md:text-xs px-4 py-2 border rounded text-white border-white hover:text-gray-700 hover:bg-gray-200">
         投稿する
       </a>
     </Link>
