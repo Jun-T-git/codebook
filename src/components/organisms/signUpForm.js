@@ -1,26 +1,55 @@
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import FormElements from "../molecules/formElements";
 import Text from "../atoms/Text";
 import Button from "../atoms/button";
-import { logIn } from "../../store/auth";
+import { logInAction } from "../../store/auth";
+import firebase from "../../config/fbConfig";
 
 // 新規登録フォーム
 // className 属性
 
 const SignUpForm = ({ dispatch, className }) => {
+  const [name, setName] = useState("");
+  const [eMail, setEMail] = useState("");
+  const [password, setPassword] = useState("");
+
   const router = useRouter();
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleChangeEMail = (e) => {
+    setEMail(e.target.value);
+  };
+
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(logIn());
-    router.push("/");
+    //新規登録処理
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(eMail, password)
+      .then((res) => {
+        //正常終了時
+        dispatch(logInAction());
+        router.push("/");
+      })
+      .catch((error) => {
+        //異常終了時
+        alert(error);
+      });
   };
 
   return (
     <form
       onSubmit={(e) => handleSubmit(e)}
-      className={`${className} bg-white shadow-md rounded px-14 pt-6 pb-8 mb-4 max-w-md mx-auto`}
+      className={`${className} bg-white shadow-md rounded px-4 md:px-14 pt-6 pb-8 mb-4 max-w-md mx-auto`}
     >
       <Text
         content={"アカウント新規登録"}
@@ -28,19 +57,28 @@ const SignUpForm = ({ dispatch, className }) => {
       />
       <FormElements
         text={"ユーザ名"}
-        onChange={() => {}}
+        value={name}
+        onChange={(e) => {
+          handleChangeName(e);
+        }}
         placeHolder={"テスト太郎"}
         className={"my-7"}
       />
       <FormElements
-        text={"ID"}
-        onChange={() => {}}
-        placeHolder={"@testId_123"}
+        text={"メールアドレス（ID）"}
+        value={eMail}
+        onChange={(e) => {
+          handleChangeEMail(e);
+        }}
+        placeHolder={"test@gmail.com"}
         className={"my-7"}
       />
       <FormElements
         text={"パスワード"}
-        onChange={() => {}}
+        value={password}
+        onChange={(e) => {
+          handleChangePassword(e);
+        }}
         placeHolder={"********"}
         type={"password"}
         className={"my-7"}

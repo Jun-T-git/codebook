@@ -60,6 +60,8 @@
 # 使用技術
 * React.js
 * Next.js
+* Redux
+* Firebase
 * Tailwind CSS
 * Atomic Design
 

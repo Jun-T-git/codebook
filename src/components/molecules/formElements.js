@@ -6,9 +6,17 @@ import Text from "../atoms/Text";
 // onChange 変更時の関数
 // placeHolder 入力のヒント
 // type 入力の種類
+// value 値
 // className 属性
 
-const FormElements = ({ text, onChange, placeHolder, type, className }) => (
+const FormElements = ({
+  text,
+  onChange,
+  placeHolder,
+  type,
+  value,
+  className,
+}) => (
   <div className={className}>
     <Text
       content={text}
@@ -18,6 +26,7 @@ const FormElements = ({ text, onChange, placeHolder, type, className }) => (
       onChange={onChange}
       placeHolder={placeHolder}
       type={type}
+      value={value}
       className={"w-full"}
     />
   </div>

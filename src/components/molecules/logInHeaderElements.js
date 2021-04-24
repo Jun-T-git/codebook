@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import Link from "next/link";
 import CircleImage from "../atoms/circleImage";
-import { logOut } from "../../store/auth";
+import { logOutAction } from "../../store/auth";
+import firebase from "../../config/fbConfig";
 
 // 認証状態のヘッダ
 // className 属性
@@ -16,8 +17,9 @@ const LogInHeaderElements = ({ dispatch, className }) => (
     <Link href="/">
       <a>
         <button
-          onClick={() => {
-            dispatch(logOut());
+          onClick={async () => {
+            await firebase.auth().signOut();
+            dispatch(logOutAction());
           }}
         >
           <CircleImage src={"/images/profile.jpg"} className={"inline-block"} />
