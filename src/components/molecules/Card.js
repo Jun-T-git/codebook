@@ -41,7 +41,7 @@ const Card = ({ title, image, tags, review, level, className }) => (
 
     <div className={"md:hidden"}>
       <div
-        className={`${className} bg-white shadow-md rounded px-7 pt-6 pb-8 mb-4 max-w-4xl mx-auto`}
+        className={`${className} bg-white shadow-md rounded px-4 pt-6 pb-8 mb-4 max-w-4xl mx-auto`}
       >
         <div className={`${className} flex justify-between`}>
           <RectImage src={image} />

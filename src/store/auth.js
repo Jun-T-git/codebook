@@ -8,7 +8,7 @@ const state_value = {
 };
 
 // Action Creator
-export const logIn = (state) => {
+export const logInAction = (state) => {
   //Action
   return {
     type: "LOGIN",
@@ -17,7 +17,7 @@ export const logIn = (state) => {
 };
 
 // Action Creator
-export const logOut = (state) => {
+export const logOutAction = (state) => {
   //Action
   return {
     type: "LOGOUT",

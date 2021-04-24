@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <SearchForm title={"書籍を探す"} className={"my-5"} />
+      <SearchForm title={"書籍を探す"} className={"mb-5"} />
       <Card
         title={"書籍タイトル"}
         image={"/images/profile.jpg"}
