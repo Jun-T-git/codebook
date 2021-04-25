@@ -10,7 +10,7 @@ import LogInHeaderElements from "../molecules/logInHeaderElements";
 
 const Header = ({ isLogIn, className }) => (
   <div className={`${className} bg-gray-700 mb-5`}>
-    <nav className={`px-2 py-1 flex justify-between items-center`}>
+    <nav className={`px-2 py-2 flex justify-between items-center`}>
       <div className={"flex justify-between items-center"}>
         <Link href="/">
           <a>

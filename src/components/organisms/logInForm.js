@@ -69,6 +69,7 @@ const LogInForm = ({ dispatch, className }) => {
         type={"password"}
         className={"my-7"}
       />
+
       <Button type={"submit"} className={"w-full btn-black mt-5 mb-2"}>
         ログイン
       </Button>
