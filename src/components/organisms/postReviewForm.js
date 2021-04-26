@@ -1,11 +1,9 @@
-import { connect } from "react-redux";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import FormElements from "../molecules/formElements";
 import Text from "../atoms/Text";
 import Button from "../atoms/button";
 import Stars from "../molecules/stars";
-import firebase from "../../config/fbConfig";
 import { db } from "../../config/fbConfig";
 import Tag from "../atoms/tag";
 import Input from "../atoms/input";
@@ -42,7 +40,9 @@ const PostReviewForm = ({ className }) => {
   };
 
   const addTag = (tag) => {
-    setTags([...tags, tag]);
+    if (tag) {
+      setTags([...tags, tag]);
+    }
   };
 
   const handleChangeContent = (e) => {
