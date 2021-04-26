@@ -33,7 +33,7 @@ const Header = ({ isLogIn, className }) => (
               />
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/roadMap">
             <a>
               <Text
                 content={"ロードマップを探す"}
@@ -58,7 +58,7 @@ const Header = ({ isLogIn, className }) => (
           />
         </a>
       </Link>
-      <Link href="/">
+      <Link href="/postReview">
         <a>
           <Text
             content={"ロードマップを探す"}
