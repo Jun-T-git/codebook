@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*背景色*/
+html {
+    @apply bg-gray-100;
+}
+
+/*ボタン*/
+.btn-black {
+    @apply bg-gray-700 text-white;
+}
+.btn-black:hover {
+    @apply bg-gray-500;
+}
+
+.btn-white {
+    @apply bg-gray-300 text-gray-900;
+}
+.btn-white:hover {
+    @apply bg-gray-400;
+}
