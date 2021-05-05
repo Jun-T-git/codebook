@@ -14,7 +14,7 @@ const Card = ({ title, image, tags, review, level, className }) => (
   <>
     <div className={"hidden md:block"}>
       <div
-        className={`${className} flex justify-between bg-white shadow-md rounded px-14 pt-6 pb-8 mb-4 max-w-4xl mx-auto`}
+        className={`${className} flex justify-between bg-white shadow-md rounded px-14 pt-6 pb-8 mb-4 max-w-5xl mx-auto`}
       >
         <RectImage src={image} />
         <div className={"w-full"}>

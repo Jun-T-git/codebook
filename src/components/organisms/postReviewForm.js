@@ -74,7 +74,7 @@ const PostReviewForm = ({ className }) => {
 
   return (
     <form
-      className={`${className} bg-white shadow-md rounded px-4 md:px-14 pt-6 pb-8 mb-4 max-w-4xl mx-auto`}
+      className={`${className} bg-white shadow-md rounded px-4 md:px-14 pt-6 pb-8 mb-4 max-w-5xl mx-auto`}
       onSubmit={(e) => handleSubmit(e)}
     >
       <Text
@@ -162,7 +162,7 @@ const PostReviewForm = ({ className }) => {
           handleChangeContent(e);
         }}
       />
-      <Button type={"submit"} className={"w-full btn-black mt-5 mb-2"}>
+      <Button type={"submit"} className={"w-full btn-black mt-5 mb-2 py-3"}>
         投稿する
       </Button>
     </form>
