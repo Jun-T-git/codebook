@@ -65,6 +65,9 @@
 * Tailwind CSS
 * Atomic Design
 
+# 工夫
+レビュー関連の機能とロードマップ関連の機能は共通する部分が多かったので，コンポーネントの再利用により得られる恩恵が大きいと考え，Atomic Designを採用．
+
 # 実行手順
 ### セットアップ
 1. `git clone https://github.com/Jun-T-git/codemap.git`
