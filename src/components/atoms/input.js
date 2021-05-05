@@ -5,8 +5,9 @@
 // type 入力の種類
 // className 属性
 
-const Input = ({ onChange, placeHolder, value, type, className }) => (
+const Input = ({ onChange, placeHolder, value, type, inputRef, className }) => (
   <input
+    ref={inputRef}
     onChange={onChange}
     placeholder={placeHolder}
     value={value}

@@ -61,6 +61,7 @@ const PostReviewForm = ({ className }) => {
         levelStar: levelStar,
         tags: tags,
         content: content,
+        createdAt: new Date(),
       })
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);

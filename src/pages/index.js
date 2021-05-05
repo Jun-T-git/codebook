@@ -1,33 +1,72 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Header from "../components/organisms/header";
 import SearchForm from "../components/organisms/searchForm";
-import Card from "../components/molecules/Card";
 import ReviewCards from "../components/organisms/reviewCards";
+import Select from "../components/atoms/select";
 import { db } from "../config/fbConfig";
 
 export default function Home() {
+  const selectOptions = [
+    { key: "createdAt", value: "投稿が新しい順", isDesc: true },
+    { key: "reviewStar", value: "評価が高い順", isDesc: true },
+    { key: "levelStar", value: "難易度が低い順", isDesc: false },
+  ];
   const [posts, setPosts] = useState([]);
+  const [initialPosts, setInitialPosts] = useState([]);
+  const [orderedBy, setOrderedBy] = useState(selectOptions[0]);
 
   useEffect(() => {
     getReviewPosts();
   }, []);
 
+  useEffect(() => {
+    setPosts(initialPosts);
+  }, [initialPosts]);
+
+  const search = (str) => {
+    let viewPosts = [];
+    for (let i = 0; i < initialPosts.length; i++) {
+      if (initialPosts[i].data.name.indexOf(str) != -1) {
+        viewPosts.push(initialPosts[i]);
+      } else {
+        for (let j = 0; j < initialPosts[i].data.tags.length; j++) {
+          if (initialPosts[i].data.tags[j].indexOf(str) != -1) {
+            viewPosts.push(initialPosts[i]);
+            break;
+          }
+        }
+      }
+    }
+    setPosts(viewPosts);
+  };
+
+  const reset = () => {
+    setPosts(initialPosts);
+  };
+
   const getReviewPosts = async () => {
-    var array = posts.slice(0, posts.length);
+    let array = [];
+    const dir = orderedBy.isDesc ? "desc" : "asc";
+    console.log(orderedBy);
     await db
       .collection("reviewPosts")
+      .orderBy(orderedBy.key, dir)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const post = { id: doc.id, data: doc.data() };
           array.push(post);
-          console.log({ id: doc.id, data: doc.data() });
-          console.log(post);
         });
       });
-    setPosts(array);
+    setInitialPosts(array);
+  };
+
+  const handleChangeSelect = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setOrderedBy(selectOptions[e.target.value]);
+    getReviewPosts();
   };
 
   return (
@@ -37,7 +76,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <SearchForm title={"書籍を探す"} className={"mb-5"} />
+      <SearchForm
+        title={"書籍を探す"}
+        search={search}
+        reset={reset}
+        className={""}
+      />
+      <div className={"my-5 max-w-4xl mx-auto text-right"}>
+        <Select
+          options={selectOptions}
+          onChange={(e) => handleChangeSelect(e)}
+        />
+      </div>
       <ReviewCards posts={posts} />
     </>
   );
