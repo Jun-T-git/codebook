@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setPosts(initialPosts);
+    setPosts(getViewPosts(initialPosts));
   }, [initialPosts]);
 
   const search = (str) => {
@@ -38,17 +38,16 @@ export default function Home() {
         }
       }
     }
-    setPosts(viewPosts);
+    setPosts(getViewPosts(viewPosts));
   };
 
   const reset = () => {
-    setPosts(initialPosts);
+    setPosts(getViewPosts(initialPosts));
   };
 
   const getReviewPosts = async () => {
     let array = [];
     const dir = orderedBy.isDesc ? "desc" : "asc";
-    console.log(orderedBy);
     await db
       .collection("reviewPosts")
       .orderBy(orderedBy.key, dir)
@@ -62,11 +61,53 @@ export default function Home() {
     setInitialPosts(array);
   };
 
+  const sortPosts = (orderedBy) => {
+    let sortedPosts = posts.slice(0, posts.length);
+    sortedPosts.sort(function (before, after) {
+      if (orderedBy.isDesc) {
+        if (before.data[orderedBy.key] > after.data[orderedBy.key]) {
+          return -1;
+        } else if (before.data[orderedBy.key] < after.data[orderedBy.key]) {
+          return 1;
+        } else {
+          return 0;
+        }
+      } else {
+        if (before.data[orderedBy.key] > after.data[orderedBy.key]) {
+          return 1;
+        } else if (before.data[orderedBy.key] < after.data[orderedBy.key]) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    });
+    setPosts(sortedPosts);
+  };
+
+  const getViewPosts = (postList) => {
+    let viewPosts = postList.slice(0, postList.length);
+    for (let i = 0; i < viewPosts.length; i++) {
+      let len = 0;
+      let endIndex = 0;
+      for (let j = 0; j < viewPosts[i].data.name.length; j++) {
+        viewPosts[i].data.name[j].match(/[ -~]/) ? (len += 1) : (len += 2);
+        if (len < 60) {
+          endIndex++;
+        }
+      }
+      if (len > 61) {
+        viewPosts[i].data.name =
+          viewPosts[i].data.name.slice(0, endIndex) + "...";
+      }
+    }
+    return viewPosts;
+  };
+
   const handleChangeSelect = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setOrderedBy(selectOptions[e.target.value]);
-    getReviewPosts();
+    sortPosts(orderedBy);
   };
 
   return (
@@ -82,7 +123,7 @@ export default function Home() {
         reset={reset}
         className={""}
       />
-      <div className={"my-5 max-w-4xl mx-auto text-right"}>
+      <div className={"my-5 max-w-5xl mx-auto text-right"}>
         <Select
           options={selectOptions}
           onChange={(e) => handleChangeSelect(e)}
