@@ -107,7 +107,7 @@ export default function Home() {
   const handleChangeSelect = (e) => {
     e.preventDefault();
     setOrderedBy(selectOptions[e.target.value]);
-    sortPosts(orderedBy);
+    sortPosts(selectOptions[e.target.value]);
   };
 
   return (
